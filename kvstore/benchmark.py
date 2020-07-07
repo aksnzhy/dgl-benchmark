@@ -62,6 +62,9 @@ def create_data(args):
     return data
 
 def start_server(args):
+    print("Wait 10 seconds to test client-reconnect.")
+    time.sleep(10)
+    data = create_data(args)
     kvserver = dgl.distributed.KVServer(server_id=args.server_id,
                                         ip_config=args.ip_config,
                                         num_clients=args.num_client)
@@ -71,7 +74,6 @@ def start_server(args):
     else:
         policy, gpb = create_range_partition_policy(args)
 
-    data = create_data(args)
     kvserver.add_part_policy(policy)
 
     if kvserver.is_backup_server():
@@ -255,7 +257,6 @@ if __name__ == '__main__':
         th.set_num_threads(args.threads)
 
     if args.server_id == -1:
-        time.sleep(2)
         start_client(args)
     else:
         start_server(args)
