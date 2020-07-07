@@ -52,7 +52,6 @@ def create_range_partition_policy(args):
                                              edge_map=edge_map)
 
     policy = dgl.distributed.PartitionPolicy(policy_str='node',
-                                             part_id=args.machine_id,
                                              partition_book=gpb)
     return policy, gpb 
 
