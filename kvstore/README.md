@@ -13,15 +13,19 @@ As a example, we run 2 server and 2 client on each machine.
 
 machine-0: 
 
-    python3 benchmark.py --server_id 0 --machine_id 0 &
-    python3 benchmark.py --server_id 1 --machine_id 0 &
+    python3 benchmark.py --server_id 0 --machine_id 0 --num_client 4 &
+    python3 benchmark.py --server_id 1 --machine_id 0 --num_client 4 &
 
 machine-1:
 
-    python3 benchmark.py --server_id 2 --machine_id 1 &
-    python3 benchmark.py --server_id 3 --machine_id 1 &
+    python3 benchmark.py --server_id 2 --machine_id 1 --num_client 4 &
+    python3 benchmark.py --server_id 3 --machine_id 1 --num_client 4 &
     
-3. Start client nodes on each machine:
+You can see the output on each machine:
+
+    Wai connection...
+    
+3. Then, start client nodes on each machine:
 
 machine-0:
 
