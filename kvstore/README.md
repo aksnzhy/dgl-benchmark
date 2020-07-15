@@ -25,7 +25,7 @@ machine-1:
     
 You can see the output on each machine:
 
-    Wai connection...
+    Wait connection...
     
 3. Then, start client nodes on each machine:
 
