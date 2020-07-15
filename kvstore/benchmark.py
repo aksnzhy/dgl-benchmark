@@ -62,9 +62,9 @@ def create_data(args):
     return data
 
 def start_server(args):
-    print("Wait 10 seconds to test client-reconnect.")
-    time.sleep(10)
+    print("create data...")
     data = create_data(args)
+    print("Create data done.")
     kvserver = dgl.distributed.KVServer(server_id=args.server_id,
                                         ip_config=args.ip_config,
                                         num_clients=args.num_client)
@@ -93,7 +93,9 @@ def start_client(args):
         policy, gpb = create_partition_policy(args)
     else:
         policy, gpb = create_range_partition_policy(args)
+    print("create data...")
     data = create_data(args)
+    print("Create data done.")
     dgl.distributed.connect_to_server(ip_config=args.ip_config)
     kvclient = dgl.distributed.KVClient(ip_config=args.ip_config)
     kvclient.barrier()
@@ -108,11 +110,6 @@ def start_client(args):
     else:
         id_tensor = np.random.randint(args.graph_size, size=args.data_size)
     id_tensor = F.tensor(id_tensor)
-
-    start = time.time()
-    res = kvclient.pull(name='data', id_tensor=id_tensor)
-    end = time.time()
-    print("Total time of pull: %f" % (end-start))
 
     start = time.time()
     for _ in range(100):
@@ -241,11 +238,11 @@ class ArgParser(argparse.ArgumentParser):
                           help='server_id')
         self.add_argument('--ip_config', type=str, default='ip_config.txt',
                           help='IP configuration file of kvstore.')
-        self.add_argument('--data_size', type=int, default=100000,
+        self.add_argument('--data_size', type=int, default=10000,
                           help='data_size of each machine.')
-        self.add_argument('--dim', type=int, default=10,
+        self.add_argument('--dim', type=int, default=200,
                           help='dim of each data.')
-        self.add_argument('--graph_size', type=int, default=100000000,
+        self.add_argument('--graph_size', type=int, default=1000000,
                           help='total size of the graph.')
         self.add_argument('--threads', type=int, default=-1,
                           help='number of pytorch threads.')
