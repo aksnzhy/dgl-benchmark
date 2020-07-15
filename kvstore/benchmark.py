@@ -238,11 +238,11 @@ class ArgParser(argparse.ArgumentParser):
                           help='server_id')
         self.add_argument('--ip_config', type=str, default='ip_config.txt',
                           help='IP configuration file of kvstore.')
-        self.add_argument('--data_size', type=int, default=10000,
+        self.add_argument('--data_size', type=int, default=100000,
                           help='data_size of each machine.')
         self.add_argument('--dim', type=int, default=200,
                           help='dim of each data.')
-        self.add_argument('--graph_size', type=int, default=1000000,
+        self.add_argument('--graph_size', type=int, default=10000000,
                           help='total size of the graph.')
         self.add_argument('--threads', type=int, default=-1,
                           help='number of pytorch threads.')
