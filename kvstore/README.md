@@ -6,6 +6,7 @@ As a example, we run 2 server and 2 client on each machine.
 
 1. Change `ip_config.txt` to set the ip address and server count to `2` like this:
 
+ip_config.txt:
 
     172.31.40.126 30050 2
     172.31.40.127 30050 2
