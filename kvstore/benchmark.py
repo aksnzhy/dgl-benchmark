@@ -240,7 +240,7 @@ class ArgParser(argparse.ArgumentParser):
                           help='IP configuration file of kvstore.')
         self.add_argument('--data_size', type=int, default=100000,
                           help='data_size of each machine.')
-        self.add_argument('--dim', type=int, default=200,
+        self.add_argument('--dim', type=int, default=10,
                           help='dim of each data.')
         self.add_argument('--graph_size', type=int, default=10000000,
                           help='total size of the graph.')
