@@ -114,6 +114,20 @@ def start_client(args):
     total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
     print("Remote fast-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
 
+    name_list = []
+    id_tensor_list = []
+    for _ in range(100):
+        name_list.append('data')
+        id_tensor_list.append(id_tensor)
+
+    start = time.time()
+    fut_list = kvclient.async_pull(name_list, id_tensor_list)
+    res = kvclient.wait(fut_list)
+    end = time.time()
+    total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
+    print("Remote async-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
+
+
 class ArgParser(argparse.ArgumentParser):
     def __init__(self):
         super(ArgParser, self).__init__()
