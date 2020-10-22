@@ -81,6 +81,20 @@ def start_client(args):
     end = time.time()
     total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
     print("Local fast-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
+
+
+    name_list = []
+    id_tensor_list = []
+    for _ in range(100):
+        name_list.append('data')
+        id_tensor_list.append(id_tensor)
+
+    start = time.time()
+    fut_list = kvclient.async_pull(name_list, id_tensor_list)
+    res = kvclient.wait()
+    end = time.time()
+    total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
+    print("Local async-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
     
     
 
