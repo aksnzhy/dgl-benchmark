@@ -32,7 +32,9 @@ You can see the output on each machine:
 
     python3 pull.py --machine_id 0 --server_id -1 &
 
-    
+    python3 pull.py --machine_id 1 --server_id -1 &
+
+
     
 You can change the arguments like `data_size`, `dim`, as well as `threads` in the program.
 
