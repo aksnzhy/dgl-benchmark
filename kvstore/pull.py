@@ -15,7 +15,7 @@ def create_range_partition_policy(args):
     edge_map = F.tensor([1,2])
 
     gpb = dgl.distributed.graph_partition_book.RangePartitionBook(part_id=args.machine_id,
-                                                                  num_parts=args.num_machine,
+                                                                  num_parts=2,
                                                                   node_map=node_map,
                                                                   edge_map=edge_map)
 
