@@ -67,6 +67,7 @@ def start_server(args):
     print("Create data done.")
     kvserver = dgl.distributed.KVServer(server_id=args.server_id,
                                         ip_config=args.ip_config,
+                                        num_servers=args.num_server,
                                         num_clients=args.num_client)
 
     if args.range == -1:
@@ -85,6 +86,7 @@ def start_server(args):
 
     dgl.distributed.start_server(server_id=args.server_id,
                                  ip_config=args.ip_config,
+                                 num_servers=args.num_server,
                                  num_clients=args.num_client,
                                  server_state=server_state)
 
@@ -230,6 +232,8 @@ class ArgParser(argparse.ArgumentParser):
                           help='If use range partition.')
         self.add_argument('--num_client', type=int, default=2,
                           help='Total number of clients.')
+        self.add_argument('--num_server', type=int, default=2,
+                          help='Total number of servers.')
         self.add_argument('--num_machine', type=int, default=2,
                           help="number of machine.")
         self.add_argument('--machine_id', type=int, default=0,
