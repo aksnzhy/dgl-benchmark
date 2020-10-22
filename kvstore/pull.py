@@ -79,7 +79,7 @@ def start_client(args):
     for _ in range(100):
         res = kvclient.pull(name='data', id_tensor=id_tensor)
     end = time.time()
-    total_bytes = (args.data_size*(args.dim+2)*4)*100*args.num_client/2
+    total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
     print("Local fast-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
     
     
@@ -98,7 +98,7 @@ def start_client(args):
     for _ in range(100):
         res = kvclient.pull(name='data', id_tensor=id_tensor)
     end = time.time()
-    total_bytes = (args.data_size*(args.dim+2)*4)*100*args.num_client/2
+    total_bytes = (args.data_size*(args.dim+2)*4)*100/2.0
     print("Remote fast-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
 
 class ArgParser(argparse.ArgumentParser):

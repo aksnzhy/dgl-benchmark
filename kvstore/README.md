@@ -15,13 +15,13 @@ ip_config.txt:
 
 machine-0: 
 
-    python3 benchmark.py --server_id 0 --machine_id 0 --num_client 4 &
-    python3 benchmark.py --server_id 1 --machine_id 0 --num_client 4 &
+    python3 pull.py --server_id 0 --machine_id 0 &
+    python3 pull.py --server_id 1 --machine_id 0 &
 
 machine-1:
 
-    python3 benchmark.py --server_id 2 --machine_id 1 --num_client 4 &
-    python3 benchmark.py --server_id 3 --machine_id 1 --num_client 4 &
+    python3 pull.py --server_id 2 --machine_id 1 &
+    python3 pull.py --server_id 3 --machine_id 1 &
     
 You can see the output on each machine:
 
@@ -29,15 +29,10 @@ You can see the output on each machine:
     
 3. Then, start client nodes on each machine:
 
-machine-0:
 
-    python3 benchmark.py --machine_id 0 &
-    python3 benchmark.py --machine_id 0 &
+    python3 pull.py --machine_id 0 --server_id -1 &
 
-machine-1:
-
-    python3 benchmark.py --machine_id 1 &
-    python3 benchmark.py --machine_id 1 &
+    
     
 You can change the arguments like `data_size`, `dim`, as well as `threads` in the program.
 
