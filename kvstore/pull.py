@@ -35,7 +35,7 @@ def start_server(args):
     print("Create data done.")
     kvserver = dgl.distributed.KVServer(server_id=args.server_id,
                                         ip_config='ip_config.txt',
-                                        num_servers=num_servers,
+                                        num_servers=args.num_servers,
                                         num_clients=1)
 
     policy, gpb = create_range_partition_policy(args)
