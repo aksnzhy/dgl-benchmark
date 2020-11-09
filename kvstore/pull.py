@@ -65,7 +65,7 @@ def start_client(args):
     kvclient = dgl.distributed.KVClient(ip_config='ip_config.txt', num_servers=args.num_server)
     kvclient.map_shared_data(partition_book=gpb)
 
-    #################################### local fast-pull ####################################
+    #################################### local pull ####################################
 
     
     if args.machine_id == 1:
@@ -97,7 +97,7 @@ def start_client(args):
     print("Local async-pull Throughput (MB): %f" % (total_bytes / (end-start) / 1024.0 / 1024.0))
     
 
-    #################################### remote fast-pull ####################################
+    #################################### remote pull ####################################
 
     
     if args.machine_id == 0:
@@ -138,7 +138,7 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument('--server_id', type=int, default=-1, help='server_id')
         self.add_argument('--data_size', type=int, default=100000,
                           help='data_size of each machine.')
-        self.add_argument('--dim', type=int, default=200,
+        self.add_argument('--dim', type=int, default=500,
                           help='dim of each data.')
         self.add_argument('--graph_size', type=int, default=1000000,
                           help='total size of the graph.')

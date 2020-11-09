@@ -15,13 +15,11 @@ ip_config.txt:
 
 machine-0: 
 
-    python3 pull.py --server_id 0 --machine_id 0 --num_server 2 &
-    python3 pull.py --server_id 1 --machine_id 0 --num_server 2 &
+    python3 pull.py --server_id 0 --machine_id 0 &
 
 machine-1:
 
-    python3 pull.py --server_id 2 --machine_id 1 --num_server 2 &
-    python3 pull.py --server_id 3 --machine_id 1 --num_server 2 &
+    python3 pull.py --server_id 1 --machine_id 1 &
     
 You can see the output on each machine:
 
@@ -30,9 +28,13 @@ You can see the output on each machine:
 3. Then, start client nodes on each machine:
 
 
-    python3 pull.py --machine_id 0 --server_id -1 &
+machine-0:
 
-    python3 pull.py --machine_id 1 --server_id -1 &
+    python3 pull.py --machine_id 0 &
+
+machine-1:
+
+    python3 pull.py --machine_id 1 &
 
 
     
