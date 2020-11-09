@@ -136,11 +136,11 @@ class ArgParser(argparse.ArgumentParser):
                           help='Number of server on each machine.')
         self.add_argument('--machine_id', type=int, help="machine ID.")
         self.add_argument('--server_id', type=int, default=-1, help='server_id')
-        self.add_argument('--data_size', type=int, default=1000000,
+        self.add_argument('--data_size', type=int, default=100000,
                           help='data_size of each machine.')
         self.add_argument('--dim', type=int, default=200,
                           help='dim of each data.')
-        self.add_argument('--graph_size', type=int, default=5000000,
+        self.add_argument('--graph_size', type=int, default=1000000,
                           help='total size of the graph.')
 
 if __name__ == '__main__':
