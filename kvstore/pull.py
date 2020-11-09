@@ -135,7 +135,7 @@ class ArgParser(argparse.ArgumentParser):
         self.add_argument('--num_server', type=int, default=2,
                           help='Number of server on each machine.')
         self.add_argument('--machine_id', type=int, help="machine ID.")
-        self.add_argument('--server_id', type=int, help='server_id')
+        self.add_argument('--server_id', type=int, default=-1, help='server_id')
         self.add_argument('--data_size', type=int, default=100000,
                           help='data_size of each machine.')
         self.add_argument('--dim', type=int, default=200,
