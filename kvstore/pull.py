@@ -132,7 +132,7 @@ class ArgParser(argparse.ArgumentParser):
     def __init__(self):
         super(ArgParser, self).__init__()
 
-        self.add_argument('--num_server', type=int, default=2,
+        self.add_argument('--num_server', type=int, default=1,
                           help='Number of server on each machine.')
         self.add_argument('--machine_id', type=int, help="machine ID.")
         self.add_argument('--server_id', type=int, default=-1, help='server_id')
